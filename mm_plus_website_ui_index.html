@@ -1,0 +1,965 @@
+	<!DOCTYPE html>
+
+<!--Design by Grafpx Design-->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    body {
+      background-color: #0a0e17;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    
+    /* Header and Navigation */
+    header {
+      background: linear-gradient(to right, #282835, #0e0e0e);
+      padding: 0.5rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 50px;
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #ffd700, #ff6b6b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-left: 0.5rem;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+    
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+    
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+    
+    .auth-buttons {
+      display: flex;
+    }
+    
+    .login-btn, .signup-btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .login-btn {
+      background-color: transparent;
+      border: 2px solid #ffd700;
+      color: #ffd700;
+    }
+    
+    .signup-btn {
+      background: linear-gradient(to right, #e9d04d, #d8a32a);
+      border: none;
+      color: #000;
+    }
+    
+    .login-btn:hover {
+      background-color: rgba(255, 215, 0, 0.1);
+    }
+    
+    .signup-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 70vh;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('./images/Slider_image__001.png');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.8);
+      z-index: -1;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #ffd700, #ff6b6b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      color: #e0e0e0;
+    }
+    
+    .play-now-btn {
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      background: linear-gradient(to right, #ffd700, #ff6b6b);
+      border: none;
+      border-radius: 50px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+      }
+    }
+    
+    /* Games Section */
+    .game-categories {
+      padding: 3rem 2rem;
+      background: linear-gradient(to bottom, #272734, #0e0e0e);
+    }
+    
+    .section-heading {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .section-heading h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+    
+    .section-heading p {
+      color: #aaa;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+	 .yellow_gold_text {
+      color: #ffd700;
+    }
+	
+	
+    .category-nav {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .category-btn {
+      padding: 0.7rem 1.5rem;
+      margin: 0.5rem;
+      background-color: #1a1a2e;
+      border: 1px solid #2a2a4e;
+      color: #fff;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .category-btn.active {
+      background: linear-gradient(to right, #ffd700, #ff6b6b);
+      color: #000;
+      border: none;
+    }
+    
+    .category-btn:hover:not(.active) {
+      background-color: #2a2a4e;
+    }
+    
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .game-card {
+      background-color: #1a1a2e;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+	  
+	  display: flex;
+	  flex-direction: column;
+      align-items: center; /* centers horizontally */
+      justify-content: flex-start; /* or 'center' for vertical centering */
+    }
+    
+    .game-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .game-card-img {
+      height: 180px;
+      width: 180px;
+	  align: center;
+      /*object-fit: cover;
+      border-bottom: 2px solid #ffd700;*/
+    }
+    
+    .game-card-content {
+      padding: 1rem;
+    }
+    
+    .game-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    
+    .game-provider {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+    
+    .game-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #ddd;
+      margin-bottom: 1rem;
+    }
+    
+    .play-btn {
+      display: block;
+      width: 100%;
+      padding: 0.8rem;
+      background: linear-gradient(to right, #e9d04d, #d8a32a);
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    
+    .play-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(255, 215, 0, 0.3);
+    }
+    
+    .hot-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: linear-gradient(to right, #ff6b6b, #ff0000);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    /* Jackpot Section */
+    .jackpot-section {
+      padding: 3rem 2rem;
+      background-color: #0d1221;
+      text-align: center;
+    }
+    
+    .jackpot-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: linear-gradient(to right, rgba(26, 26, 46, 0.9), rgba(18, 22, 37, 0.9));
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .jackpot-container::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(transparent, rgba(255, 215, 0, 0.1), transparent 30%);
+      animation: rotate 10s linear infinite;
+      z-index: 0;
+    }
+    
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .jackpot-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .jackpot-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+    
+    .jackpot-amount {
+      font-size: 3.5rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #ffd700, #ff6b6b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+    }
+    
+    .jackpot-description {
+      margin-bottom: 2rem;
+      color: #ddd;
+    }
+    
+    /* Promotions */
+    .promotions {
+      padding: 3rem 2rem;
+      background-color: #0a0e17;
+    }
+    
+    .promo-slider {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    
+	
+    .promo-card {
+      flex: 1;
+      min-width: 300px;
+      max-width: 400px;
+      background: linear-gradient(to bottom right, #1a1a2e, #121625);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s;
+	  
+	  
+
+    }
+	
+	
+	/*
+	.promo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers content horizontally */
+    justify-content: flex-start; /* or 'center' for vertical centering */
+   }
+
+    */
+	
+    .promo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    .promo-img {
+       height: 80px;
+       display: block;
+       margin-left: auto;
+       margin-right: auto;
+		margin-top: 20px;
+	    padding: 0.5rem;
+    }
+    
+    .promo-content {
+      padding: 1.5rem;
+    }
+    
+    .promo-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+    
+    .promo-description {
+      color: #ddd;
+      margin-bottom: 1.5rem;
+    }
+    
+    .claim-btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(to right, #ffd700, #ffa500);
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .claim-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(255, 215, 0, 0.3);
+    }
+    
+    /* Features */
+    .features {
+      padding: 3rem 2rem;
+      background: linear-gradient(to top, #121625, #0a0e17);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .feature-card {
+      background-color: #1a1a2e;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s;
+      border-top: 3px solid #ffd700;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(255, 215, 0, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .feature-icon img {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .feature-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+    
+    .feature-description {
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #151518;
+      padding: 3rem 2rem 1rem;
+    }
+    
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 1.5rem;
+      padding: 0 1rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #ffd700;
+      position: relative;
+    }
+    
+    .footer-column h3::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(to right, #ffd700, #ff6b6b);
+      margin-top: 0.5rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.7rem;
+    }
+    
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 0.9rem;
+    }
+    
+    .footer-links a:hover {
+      color: #ffd700;
+    }
+    
+    .payment-methods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .payment-icon {
+      width: 40px;
+      height: 25px;
+      background-color: #fff;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .social-icons {
+ 
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+ 
+    }
+    
+	.social-icons img {
+		width: 24px; /* or any size you prefer 
+}
+
+    .social-icon {
+      width: 15px;
+      height: 15px;
+	  
+      /*background-color: #1a1a2e;
+      border-radius: 50%;*/
+	  
+		height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    
+    .social-icon:hover {
+      background-color: #ffd700;
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid #2a2a4e;
+      padding-top: 1.5rem;
+      text-align: center;
+      color: #888;
+      font-size: 0.8rem;
+    }
+    
+    .footer-bottom p {
+      margin-bottom: 1rem;
+    }
+    
+    .responsible-gaming {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .responsible-gaming img {
+      height: 30px;
+    }
+    
+    /* Floating Elements */
+    .floating-chat {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(to right, #ffd700, #ff6b6b);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+      cursor: pointer;
+      z-index: 99;
+      transition: all 0.3s;
+    }
+    
+    .floating-chat:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      header {
+        padding: 0.5rem 1rem;
+      }
+      
+      .nav-container {
+        flex-direction: column;
+      }
+      
+      nav ul {
+        margin: 1rem 0;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .auth-buttons {
+        margin-top: 1rem;
+      }
+      
+      .section-heading h2 {
+        font-size: 1.8rem;
+      }
+      
+      .jackpot-amount {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+  <title>Minute Millionaire - Play & Win Big!</title>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <img src="./images/MM_Plus_vertical_logo.png" alt="Minute Millionaire Logo" />
+        <span class="logo-text"> </span>
+      </div>
+      
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Games</a></li>
+          <li><a href="#">Promotions</a></li>
+          <li><a href="#">VIP</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+      </nav>
+      
+      <div class="auth-buttons">
+        <button class="login-btn">Log In</button>
+        <button class="signup-btn">Sign Up</button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1><img src="./images/jackpot_price_02.png" alt="Jackpot Price" /> </h1>
+      <p>Experience the thrill of Casino Games from the comfort of your home. Play hundreds of games and win real cash prizes!</p>
+      <button class="play-now-btn">Play Now & Get 100 Free Spins</button>
+    </div>
+  </section>
+  
+  <!-- Game Categories -->
+  <section class="game-categories">
+    <div class="section-heading">
+      <h2>Our <span class="yellow_gold_text">Game Collection</span></h2>
+      <p>Explore our vast library of games and find your favorites</p>
+    </div>
+    
+    <div class="category-nav">
+      <button class="category-btn active">All Games</button>
+      <button class="category-btn">Slots</button>
+      <button class="category-btn">Table Games</button>
+      <button class="category-btn">Live Casino</button>
+      <button class="category-btn">Jackpots</button>
+      <button class="category-btn">New Releases</button>
+    </div>
+    
+    <div class="games-grid">
+      <!-- Game Card 1 -->
+      <div class="game-card">
+        <img class="game-card-img" src="./images/WTA_with_glow.png" alt="Winner Take All" />
+        <div class="game-card-content">
+          <h3 class="game-title">Winner Take All</h3>
+          <p class="game-provider">Evolution Gaming</p>
+          <div class="game-stats">
+            <span>RTP: 96.5%</span>
+            <span>⭐ 4.8/5</span>
+          </div>
+          <button class="play-btn">Play Now</button>
+        </div>
+        <div class="hot-badge">HOT</div>
+      </div>
+      
+      <!-- Game Card 2 -->
+      <div class="game-card">
+        <img class="game-card-img" src="./images/HILO_with_glow.png" alt="HILO" />
+        <div class="game-card-content">
+          <h3 class="game-title">HILO</h3>
+          <p class="game-provider">NetEnt</p>
+          <div class="game-stats">
+            <span>RTP: 99.2%</span>
+            <span>⭐ 4.7/5</span>
+          </div>
+          <button class="play-btn">Play Now</button>
+        </div>
+      </div>
+      
+      <!-- Game Card 3 -->
+      <div class="game-card">
+        <img class="game-card-img" src="./images/trio_with_glow.png" alt="Trio" />
+        <div class="game-card-content">
+          <h3 class="game-title">Trio</h3>
+          <p class="game-provider">Microgaming</p>
+          <div class="game-stats">
+            <span>RTP: 95.8%</span>
+            <span>⭐ 4.5/5</span>
+          </div>
+          <button class="play-btn">Play Now</button>
+        </div>
+      </div>
+      
+      <!-- Game Card 4 -->
+	    <!--
+      <div class="game-card">
+        <img class="game-card-img" src="/api/placeholder/250/180" alt="Diamond Roulette" />
+        <div class="game-card-content">
+          <h3 class="game-title">Diamond Roulette</h3>
+          <p class="game-provider">Playtech</p>
+          <div class="game-stats">
+            <span>RTP: 97.3%</span>
+            <span>⭐ 4.6/5</span>
+          </div>
+          <button class="play-btn">Play Now</button>
+        </div>
+        <div class="hot-badge">HOT</div>
+      </div>
+    </div>
+	
+	-->
+	
+  </section>
+  
+  <!-- Jackpot Section -->
+  <section class="jackpot-section">
+    <div class="jackpot-container">
+      <div class="jackpot-content">
+        <h2 class="jackpot-title">MEGA JACKPOT</h2>
+        <div class="jackpot-amount">$1,452,378.95</div>
+        <p class="jackpot-description">Our progressive jackpot keeps growing until someone wins it all! Will you be the next lucky player?</p>
+        <button class="play-now-btn">Try Your Luck</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Promotions -->
+  <section class="promotions">
+    <div class="section-heading">
+      <h2>Latest Promotions</h2>
+      <p>Check out our latest offers and bonuses</p>
+    </div>
+    
+    <div class="promo-slider">
+      <!-- Promo Card 1 -->
+      <div class="promo-card">
+        <img class="promo-img" src="./images/welcome_package_a.png" alt="Welcome Bonus" />
+        <div class="promo-content">
+          <h3 class="promo-title">Welcome Package</h3>
+          <p class="promo-description">Get a 100% match bonus up to $500 + 100 free spins on your first deposit!</p>
+          <button class="claim-btn">Claim Now</button>
+        </div>
+      </div>
+      
+      <!-- Promo Card 2 -->
+      <div class="promo-card">
+        <img class="promo-img" src="./images/weekly_cashback_a.png" alt="Weekly Cashback" />
+        <div class="promo-content">
+          <h3 class="promo-title">Weekly Cashback</h3>
+          <p class="promo-description">Receive up to 15% cashback on your net losses every week, no questions asked!</p>
+          <button class="claim-btn">Claim Now</button>
+        </div>
+      </div>
+      
+      <!-- Promo Card 3 -->
+      <div class="promo-card">
+        <img class="promo-img" src="./images/vip_program_logo.png" alt="VIP Program" />
+        <div class="promo-content">
+          <h3 class="promo-title">VIP Program</h3>
+          <p class="promo-description">Join our exclusive VIP program and enjoy personalized service, higher limits, and special rewards.</p>
+          <button class="claim-btn">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features -->
+  <section class="features">
+    <div class="section-heading">
+      <h2>Why Choose <span class="yellow_gold_text">Minute Millionaire</span></h2>
+      <p>We offer the best gaming experience on the web</p>
+    </div>
+    
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="./images/security_.png" alt="Security Icon" />
+        </div>
+        <h3 class="feature-title">Safe & Secure</h3>
+        <p class="feature-description">256-bit SSL encryption technology and regulated gaming license ensures your data and funds are always protected.</p>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="./images/fast_cash.png" alt="Fast Payout Icon" />
+        </div>
+        <h3 class="feature-title">Fast Payouts</h3>
+        <p class="feature-description">Withdrawals processed within 24 hours. Get your winnings quickly and hassle-free.</p>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="./images/games_.png" alt="Games Icon" />
+        </div>
+        <h3 class="feature-title">2000+ Games</h3>
+        <p class="feature-description">Huge selection of slots, table games, and live dealer experiences from top providers.</p>
+      </div>
+      
+      <!-- Feature 4 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="./images/support_.png" alt="Support Icon" />
+        </div>
+        <h3 class="feature-title">24/7 Support</h3>
+        <p class="feature-description">Our professional support team is available round the clock to assist you with any questions.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <!-- Column 1 -->
+      <div class="footer-column">
+        <h3>Minute Millionaire</h3>
+        <p style="color: #aaa; margin-bottom: 1rem; font-size: 0.9rem;">The ultimate online casino experience with the biggest selection of games and best bonuses.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><img src="./images/Facebook_logo.png" alt="Facebook" /></a>
+          <a href="#" class="social-icon"><img src="./images/x_logo.png" alt="X" /></a>
+          <a href="#" class="social-icon"><img src="./images/instagram_logo.png" alt="Instagram" /></a>
+        </div>
+      </div>
+      
+      <!-- Column 2 -->
+      <div class="footer-column">
+        <h3>Games</h3>
+        <ul class="footer-links">
+          <li><a href="#">Winner Take All</a></li>
+          <li><a href="#">HILO</a></li>
+          <li><a href="#">Trio</a></li>
+          
+        </ul>
+      </div>
+      
+      <!-- Column 3 -->
+      <div class="footer-column">
+        <h3>Information</h3>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Responsible Gaming</a></li>
+          <li><a href="#">Affiliate Program</a></li>
+        
