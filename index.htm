@@ -564,6 +564,10 @@
       margin-bottom: 2rem;
     }
     
+	.footer-column {
+  min-width: 200px;
+}
+	
     .footer-column h3 {
       font-size: 1.2rem;
       margin-bottom: 1rem;
@@ -584,8 +588,18 @@
       list-style: none;
     }
     
+	.footer-links img {
+  width: 100px;
+  height: auto; /* Keeps the aspect ratio */
+}
+
+	
+	
     .footer-links li {
       margin-bottom: 0.7rem;
+	  display: flex;
+	  align-items: left;
+      justify-content: left;
     }
     
     .footer-links a {
@@ -654,6 +668,160 @@
     .floating-chat:hover {
       transform: scale(1.1);
     }
+	
+	
+	
+	/* Modal Container */
+	
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 14, 23, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  display: none; /* Hide by default */
+}
+
+
+
+/* Modal Box */
+.login-content {
+  background-color: #1f2330;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 320px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  animation: fadeIn 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+}
+
+.login-content h2 {
+  margin-bottom: 1rem;
+}
+
+.login-content input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 4px;
+}
+
+.login-content button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #ffd700;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-content button:hover {
+  background-color: #e5c100;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+
+/* Simple fade-in */
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+	
+	
+/* Sign-Up Modal*/
+
+.signup_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 14, 23, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.signup_modal-content {
+	background-color: #1f2330;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 320px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s ease;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.signup_modal-content input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+}
+
+.signup_modal-content  h2 {
+  margin-bottom: 1rem;
+}
+
+.signup_modal-content button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
     
     /* Mobile Responsive */
 	
@@ -782,7 +950,18 @@
    .hero-content {
     padding: 1rem;
   }
+  
+  
+  .footer-links img {
+    width: 80px;
+  }
+  
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
 }
+
+
 
 	
   </style>
@@ -816,11 +995,42 @@
         </nav>
         
         <div class="auth-buttons">
-          <a href="#" class="login-btn" onclick="closeMobileMenu()">Log In</a>
-          <a href="#" class="signup-btn" onclick="closeMobileMenu()">Sign Up</a>
+		  <a href="#" class="login-btn" onclick="openLoginModal()">Log In</a>
+		<a href="#" class="signup-btn" onclick="openSignupModal()">Sign Up</a>
         </div>
       </div>
     </div>
+	
+	<!-- Floating Login Form Container -->
+<div class="login-modal" id="loginModal">
+  <div class="login-content">
+    <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+    <h2>Log In</h2>
+    <form>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Log In</button>
+    </form>
+  </div>
+</div>
+
+	<!-- Floating Sign-Up Form Container -->
+
+	<div id="signup-modal" class="signup_modal hidden">
+  <div class="signup_modal-content">
+    <span class="close-btn" onclick="closeSignupModal()">&times;</span>
+    <h2>Sign Up</h2>
+    <form>
+      <input type="text" placeholder="Username" required />
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+</div>
+
+	
+	
   </header>
   
   <!-- Hero Section -->
@@ -1013,11 +1223,12 @@
   
   <!-- Footer -->
   <footer>
+  
     <div class="footer-top">
       <!-- Column 1 -->
       <div class="footer-column">
         <h3>Minute Millionaire</h3>
-        <p style="color: #aaa; margin-bottom: 1rem; font-size: 0.9rem;">The ultimate online casino experience with the biggest selection of games and best bonuses.</p>
+        <p style="color: #aaa; margin-bottom: 1rem; font-size: 0.9rem;">The ultimate online casino experience<br>with the biggest selection of games<br>and best bonuses.</p>
         <div class="social-icons">
           <a href="#" class="social-icon"><img src="./images/Facebook_logo.png" alt="Facebook" /></a>
           <a href="#" class="social-icon"><img src="./images/x_logo.png" alt="X" /></a>
@@ -1038,6 +1249,15 @@
       
       <!-- Column 3 -->
       <div class="footer-column">
+        <h3>Play Mobile</h3>
+        <ul class="footer-links">
+          <li><a href="#"><img src="./images/Download_ios.png" alt="ios" /></a></li>
+          <li><a href="#"><img src="./images/Download_android.png" alt="ios" /></a></li>
+        
+		</div>
+		  
+		     <!-- Column 4 -->
+      <div class="footer-column">
         <h3>Information</h3>
         <ul class="footer-links">
           <li><a href="#">About Us</a></li>
@@ -1045,14 +1265,36 @@
           <li><a href="#">Privacy Policy</a></li>
           <li><a href="#">Responsible Gaming</a></li>
           <li><a href="#">Affiliate Program</a></li>
+		</div>
+		  
+		  
 		  
 		  
         </footer>
 		
-		<script>
+<script>
   function toggleMobileMenu() {
     document.querySelector('.nav-menu').classList.toggle('active');
   }
+  
+  
+function openLoginModal() {
+  document.getElementById("loginModal").style.display = "flex";
+}
+function closeLoginModal() {
+  document.getElementById("loginModal").style.display = "none";
+}
+
+function openSignupModal() {
+  document.getElementById('signup-modal').classList.remove('hidden');
+}
+
+function closeSignupModal() {
+  document.getElementById('signup-modal').classList.add('hidden');
+}
+
+
+
 </script>
 		</body>
 		
